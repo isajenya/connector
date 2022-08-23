@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1mbi5n2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.1.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
   <bpmn:process id="Process_0omr0h0" isExecutable="true">
-    <bpmn:startEvent id="StartEvent_1">
-      <bpmn:extensionElements>
-        <camunda:formData businessKey="">
-          <camunda:formField id="name" label="name" type="string" />
-        </camunda:formData>
-      </bpmn:extensionElements>
-      <bpmn:outgoing>Flow_0l8xptm</bpmn:outgoing>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_0bwslcb" messageRef="Message_3nv64g8" />
-    </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_0l8xptm" sourceRef="StartEvent_1" targetRef="stask1" />
     <bpmn:serviceTask id="stask1" name="stask1">
       <bpmn:extensionElements>
         <camunda:connector>
           <camunda:inputOutput>
+            <camunda:inputParameter name="method">GET</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://localhost:8080/getconnector/${name}</camunda:inputParameter>
             <camunda:outputParameter name="namelength">${response}</camunda:outputParameter>
           </camunda:inputOutput>
           <camunda:connectorId>http-connector</camunda:connectorId>
         </camunda:connector>
-        <camunda:inputOutput>
-          <camunda:inputParameter name="url">http://localhost:8080/getconnector/${name}</camunda:inputParameter>
-          <camunda:inputParameter name="method">GET</camunda:inputParameter>
-        </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0l8xptm</bpmn:incoming>
       <bpmn:outgoing>Flow_1igvqmg</bpmn:outgoing>
@@ -82,51 +70,59 @@
       <bpmn:incoming>Flow_02bta1d</bpmn:incoming>
       <bpmn:outgoing>Flow_091idox</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:extensionElements>
+        <camunda:formData businessKey="">
+          <camunda:formField id="name" label="name" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_0l8xptm</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0bwslcb" messageRef="Message_3nv64g8" />
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0l8xptm" sourceRef="StartEvent_1" targetRef="stask1" />
   </bpmn:process>
   <bpmn:message id="Message_3nv64g8" name="msg-s-2" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0omr0h0">
       <bpmndi:BPMNEdge id="Flow_091idox_di" bpmnElement="Flow_091idox">
-        <di:waypoint x="1240" y="117" />
-        <di:waypoint x="1302" y="117" />
+        <di:waypoint x="920" y="117" />
+        <di:waypoint x="972" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_02bta1d_di" bpmnElement="Flow_02bta1d">
-        <di:waypoint x="1080" y="117" />
-        <di:waypoint x="1140" y="117" />
+        <di:waypoint x="760" y="117" />
+        <di:waypoint x="820" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1u814vd_di" bpmnElement="Flow_1u814vd">
-        <di:waypoint x="920" y="117" />
-        <di:waypoint x="980" y="117" />
+        <di:waypoint x="590" y="117" />
+        <di:waypoint x="660" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1igvqmg_di" bpmnElement="Flow_1igvqmg">
-        <di:waypoint x="540" y="77" />
-        <di:waypoint x="540" y="57" />
-        <di:waypoint x="870" y="57" />
-        <di:waypoint x="870" y="77" />
+        <di:waypoint x="380" y="117" />
+        <di:waypoint x="490" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0l8xptm_di" bpmnElement="Flow_0l8xptm">
         <di:waypoint x="215" y="117" />
-        <di:waypoint x="490" y="117" />
+        <di:waypoint x="280" y="117" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Event_12c4xvs_di" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="99" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_16m5yvv_di" bpmnElement="stask1">
+      <bpmndi:BPMNShape id="Activity_09zdihr_di" bpmnElement="Activity_0z3cpgo">
         <dc:Bounds x="490" y="77" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_09zdihr_di" bpmnElement="Activity_0z3cpgo">
-        <dc:Bounds x="820" y="77" width="100" height="80" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0yepat2_di" bpmnElement="stask2">
-        <dc:Bounds x="980" y="77" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_1g3b6vt_di" bpmnElement="Event_1g3b6vt">
-        <dc:Bounds x="1302" y="99" width="36" height="36" />
+        <dc:Bounds x="660" y="77" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_05lo53k_di" bpmnElement="Activity_153rnf5">
-        <dc:Bounds x="1140" y="77" width="100" height="80" />
+        <dc:Bounds x="820" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1g3b6vt_di" bpmnElement="Event_1g3b6vt">
+        <dc:Bounds x="972" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_16m5yvv_di" bpmnElement="stask1">
+        <dc:Bounds x="280" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
