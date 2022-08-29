@@ -1,0 +1,5 @@
+com\comunda\isa\controller\SampleController.class
+com\comunda\isa\Model\Person.class
+com\comunda\isa\Application.class
+com\comunda\isa\Model\Summers.class
+com\comunda\isa\service\CamundaStartService.class

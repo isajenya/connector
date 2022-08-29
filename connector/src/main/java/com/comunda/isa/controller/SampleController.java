@@ -4,12 +4,14 @@ import com.comunda.isa.Model.Person;
 import com.comunda.isa.Model.Summers;
 import com.comunda.isa.service.CamundaStartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SampleController {
     @Autowired
     CamundaStartService camundaStartService;
+
 
     @GetMapping("/get")
     public String index(){
@@ -25,7 +27,7 @@ public class SampleController {
         camundaStartService.startProcessByMessage(name);
     }
 
-    @PostMapping("/getconnector/{name}")
+    @GetMapping("/getconnector/{name}")
     public int getConnector(@PathVariable(value = "name") String name){
         return name.length();
     }
@@ -33,6 +35,20 @@ public class SampleController {
     @PostMapping("/postconnector")
     public int msg2(@RequestBody Summers summers){
         return summers.getNum1() + summers.getNum2() + summers.getNum3() + summers.getNum4();
+
+    }
+
+    @GetMapping("/example")
+    public String getExample(){
+        return "example";
+    }
+
+    @PostMapping("/postconnector2")
+    public String msg3(@RequestBody Summers summers, Model model){
+        int sum = summers.getNum1() + summers.getNum2() + summers.getNum3() + summers.getNum4();
+        model.addAttribute("sum", sum);
+        return "sumExample";
+
     }
 
 
